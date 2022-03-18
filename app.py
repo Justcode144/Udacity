@@ -21,7 +21,7 @@ def create_todo():
   todo = Todo(description=description)
   db.session.add(todo)
   db.session.commit()
-  return redirect(url_for('create_todo'))
+  return redirect(url_for('index'))
 
 @app.route('/')
 def index():
