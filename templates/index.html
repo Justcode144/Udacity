@@ -9,12 +9,12 @@
     </style>
   </head>
   <body>
-  <form method="post" action="todos/create"/>
-    <input type="text" name="description"/>
+  <form id="form"/>
+    <input type="text" name="description" id="description"/> CLICK THIS -->
     <input type="submit" value="Create"/>
   </form>
-  <div is="error" class="hidden">Something went wrong!</div>
-    <ul>
+  <div id="error" class="hidden">Something went wrong!</div>
+    <ul id ="todos">
       {% for d in data %}
       <li>{{ d.description }}</li>
       {% endfor %}
@@ -38,7 +38,7 @@
           console.log(jsonResponse);
           const liItem= document.createElement('LI');
           liItem.innerHTML = jsonResponse['description'];
-          document.getElementById('todo').appendChild(liItem);
+          document.getElementById('todos').appendChild(liItem);
           document.getElementById('error').className = 'hidden';
         })
         .catch(function(){

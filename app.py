@@ -15,6 +15,11 @@ class Todo(db.Model):
     def __repr__(self):
         return f' <todos {self.id} {self.descripiton}>' # Changed TODO to todos
 
+
+db.drop_all()
+db.create_all()
+
+
 @app.route('/todos/create', methods=['POST'])
 def create_todo():
   description = request.get_json()['description']
@@ -27,10 +32,9 @@ def create_todo():
 
 @app.route('/')
 def index():
-  return render_template('todoapp.html', data=Todo.query.all()
+  return render_template('index.html', data=Todo.query.all()
                          )
 
-db.create_all()
 
 if __name__ == '__main__':
    app.run(host="0.0.0.0", port=3000)
